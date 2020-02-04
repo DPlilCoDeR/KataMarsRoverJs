@@ -20,6 +20,11 @@ module.exports = class marsRobert {
             let xLess = --this.x;
             return this.position = xLess+ ' , '+this.y;
         }
+
+        if (command == 'l'){
+            let yLess = --this.y;
+            return this.position = this.x+' , '+yLess;
+        }
     };
 };
 

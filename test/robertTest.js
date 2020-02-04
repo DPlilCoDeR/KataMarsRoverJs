@@ -6,7 +6,6 @@ describe('Test of MarsRobert', function () {
     it('check the initial position of robot', function () {
         let Robert;
         Robert = new marsRobert(0 , 0);
-        console.log(Robert);
         const position = '0 , 0';
         let robertPosition = Robert.position;
         assert.equal(position,robertPosition);
@@ -32,11 +31,14 @@ describe('Test of MarsRobert', function () {
         const command = 'b';
         const positionAfterCommand = '-1 , 0';
         let robertCommand = Robert.commands(command);
-        console.log(Robert.position);
         assert.equal(robertCommand, positionAfterCommand);
     });
 
     it('Check if robot makes the command left(l)', function () {
-
+        const Robert = new marsRobert(0,0);
+        const command = 'l';
+        const positionAfterCommand = '0 , -1';
+        let robertCommand = Robert.commands(command);
+        assert.equal(robertCommand, positionAfterCommand);
     });
 });
