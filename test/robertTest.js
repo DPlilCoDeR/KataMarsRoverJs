@@ -41,4 +41,12 @@ describe('Test of MarsRobert', function () {
         let robertCommand = Robert.commands(command);
         assert.equal(robertCommand, positionAfterCommand);
     });
+
+    it('Check if robot makes the command right(r)', function () {
+        const Robert = new marsRobert(0,0);
+        const command = 'r';
+        const positionAfterCommand = '0 , 1';
+        let robertCommand = Robert.commands(command);
+        assert.equal(robertCommand, positionAfterCommand);
+    });
 });
