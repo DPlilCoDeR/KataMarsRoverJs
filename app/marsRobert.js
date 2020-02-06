@@ -8,22 +8,17 @@ module.exports = class marsRobert {
     }
 
     position = '0 , 0';
-    orientation = 'N';
+    orientation = ['N','E','S','W'];
 
 
     commands(command){
-        if (command === 'f'){
+        if (command === 'm'){
             let xPlus = ++this.x;
             return this.position = xPlus+ ' , '+this.y;
         }
-        if (command == 'b'){
-            let xLess = --this.x;
-            return this.position = xLess+ ' , '+this.y;
-        }
 
         if (command == 'l'){
-            let yLess = --this.y;
-            return this.position = this.x+' , '+yLess;
+            let leftorientation;
         }
 
         if (command == 'r'){

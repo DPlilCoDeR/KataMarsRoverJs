@@ -18,18 +18,10 @@ describe('Test of MarsRobert', function () {
         assert.deepEqual(robertOrientation, orientation);
     });
 
-    it('Check if robot makes the command forward(f)', function () {
+    it('Check if robot makes the command move(m)', function () {
         const Robert = new marsRobert(0,0);
-        const command = 'f';
+        const command = 'm';
         const positionAfterCommand = '1 , 0';
-        let robertCommand = Robert.commands(command);
-        assert.equal(robertCommand, positionAfterCommand);
-    });
-
-    it('Check if robot makes the command back(b)', function () {
-        const Robert = new marsRobert(0,0);
-        const command = 'b';
-        const positionAfterCommand = '-1 , 0';
         let robertCommand = Robert.commands(command);
         assert.equal(robertCommand, positionAfterCommand);
     });
@@ -37,16 +29,16 @@ describe('Test of MarsRobert', function () {
     it('Check if robot makes the command left(l)', function () {
         const Robert = new marsRobert(0,0);
         const command = 'l';
-        const positionAfterCommand = '0 , -1';
+        const orientationAfterCommand = 'W';
         let robertCommand = Robert.commands(command);
-        assert.equal(robertCommand, positionAfterCommand);
+        assert.equal(robertCommand, orientationAfterCommand);
     });
 
     it('Check if robot makes the command right(r)', function () {
         const Robert = new marsRobert(0,0);
         const command = 'r';
-        const positionAfterCommand = '0 , 1';
+        const orientationAfterCommand = 'E';
         let robertCommand = Robert.commands(command);
-        assert.equal(robertCommand, positionAfterCommand);
+        assert.equal(robertCommand, orientationAfterCommand);
     });
 });
