@@ -1,30 +1,62 @@
 module.exports = class marsRobert {
 
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.position = x+ ' , '+y;
+    constructor() {
+        this.x = 0;
+        this.y = 0;
         this.orientation = 'N';
     }
 
-    position = '0 , 0';
-    orientation = ['N','E','S','W'];
+    getPosition(){
+        return [this.x, this.y];
+    }
 
-
-    commands(command){
-        if (command === 'm'){
-            let xPlus = ++this.x;
-            return this.position = xPlus+ ' , '+this.y;
+    getOrientation(){
+        return this.orientation;
+    }
+    execute(command){
+        if(command === 'f'){
+            this.move(command);
         }
 
+        if(command === 'l' || command === 'r'){
+            this.rotate(command);
+        }
+    };
+
+    move(){
+            if (this.orientation == 'N'){
+                this.y++;
+            }
+            if (this.orientation == 'S'){
+                this.y--;
+            }
+            if (this.orientation == 'W'){
+                this.x--;
+            }
+            if (this.orientation == 'E'){
+                this.x++;
+            }
+    }
+
+    rotate(command){
+
+
         if (command == 'l'){
-            let leftorientation;
+            if (this.orientation == 'N'){
+                let newLeftorientation = 'W';
+                this.orientation = newLeftorientation;
+                return this.orientation;
+            }
         }
 
         if (command == 'r'){
-            let yPlus = ++this.y;
-            return this.position = this.x+' , '+yPlus;
+            if (this.orientation == 'N'){
+                let newRightOrientation = 'E';
+                this.orientation = newRightOrientation;
+                return this.orientation;
+            }
         }
-    };
+    }
+
 };
 

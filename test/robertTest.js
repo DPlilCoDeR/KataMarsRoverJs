@@ -1,36 +1,38 @@
 const assert = require ('chai').assert;
+const expect = require('chai').expect;
 const marsRobert = require ('../app/marsRobert');
 
 describe('Test of MarsRobert', function () {
 
     it('check the initial position of robot', function () {
-        let Robert;
-        Robert = new marsRobert(0 , 0);
-        const position = '0 , 0';
-        let robertPosition = Robert.position;
-        assert.equal(position,robertPosition);
+        const expectedPosition = [0 ,0];
+        const Robert = new marsRobert();
+        const [x, y] = Robert.getPosition();
+        expect(expectedPosition).to.deep.equal([x, y]);
     });
 
     it('Check the initial orientation of robot', function () {
         const orientation = 'N';
-        const Robert = new marsRobert(orientation);
-        let robertOrientation = Robert.orientation;
+        const Robert = new marsRobert();
+        const robertOrientation = Robert.orientation;
         assert.deepEqual(robertOrientation, orientation);
     });
 
     it('Check if robot makes the command move(m)', function () {
-        const Robert = new marsRobert(0,0);
-        const command = 'm';
-        const positionAfterCommand = '1 , 0';
-        let robertCommand = Robert.commands(command);
-        assert.equal(robertCommand, positionAfterCommand);
+        const Robert = new marsRobert();
+        const command = 'f';
+        Robert.execute(command);
+        let robertCommand = Robert.getPosition();
+        const positionAfterCommand = [0 , 1];
+        expect(positionAfterCommand).to.deep.equal(robertCommand);
     });
 
     it('Check if robot makes the command left(l)', function () {
-        const Robert = new marsRobert(0,0);
+        const Robert = new marsRobert();
         const command = 'l';
         const orientationAfterCommand = 'W';
-        let robertCommand = Robert.commands(command);
+        Robert.execute(command);
+        let robertCommand = Robert.getOrientation();
         assert.equal(robertCommand, orientationAfterCommand);
     });
 
@@ -38,7 +40,8 @@ describe('Test of MarsRobert', function () {
         const Robert = new marsRobert(0,0);
         const command = 'r';
         const orientationAfterCommand = 'E';
-        let robertCommand = Robert.commands(command);
+        Robert.execute(command);
+        let robertCommand = Robert.getOrientation();
         assert.equal(robertCommand, orientationAfterCommand);
     });
 });
